@@ -1,0 +1,71 @@
+.home-title {
+    font-family: raleway; 
+    font-weight: bold;
+    font-size: 42pt;
+}
+
+.fa-shopping-cart {
+    font-size: 20pt;
+}
+
+.cart-quantity {
+    position: relative;
+    vertical-align: top;
+    margin-right: -35px;
+    margin-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+    font-weight: bold;
+    color: white;
+    width: 22px;
+    height: 22px;
+    padding: 1px 0 0 0;
+    text-align: center;
+    border-radius: 100%;
+    border-color: white;
+    border-style: solid;
+    border-width: 2px;
+    background-color: red;
+}
+
+.header-content {
+    position: fixed;
+}
+
+.cart-item {
+    width: 100%;
+    border-top: 5px;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-style: solid;
+    border-color: rgb(178, 197, 233);
+    padding: 1.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+.cart-item .img-fluid {
+    height: 150px !important; 
+    width: 100px !important;
+}
+
+.cart-total {
+    border: 3px;
+    border-radius: 5px;
+    padding: 15px;
+    border-style: solid;
+    border-color: rgb(178, 197, 233);
+}
+
+.form-check-input {
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+    border-width: 3px;
+    border-color: cornflowerblue;
+}
+
+.fa-trash {
+    vertical-align: middle;
+    color: red;
+    font-size: 20pt;
+}
