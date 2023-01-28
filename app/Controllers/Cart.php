@@ -14,12 +14,7 @@ class Cart extends BaseController
     }
     public function index()
     {
-        if (session()->get('cart_session') == null) {
-            session()->set("cart_session", []);
-        }
-
         $totalQtyCartItem = 0;
-
         if (sizeof(session()->get('cart_session')) > 0) {
             foreach (session()->get('cart_session') as $value) :
                 if (sizeof($value) > 0)
@@ -27,13 +22,12 @@ class Cart extends BaseController
             endforeach;
         }
 
+        // dd(session()->get('cart_session'));
         $data = [
-            'title' => 'Detail Comic',
-            'books' => $this->bookModel->getAll(),
-            'totalQtyCartItem' => $totalQtyCartItem
+            'title' => 'Keranjang',
+            'totalQtyCartItem' => $totalQtyCartItem,
+            'cartItems' => session()->get('cart_session')
         ];
-
-
 
         return view('cart', $data);
     }
