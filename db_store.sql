@@ -101,7 +101,7 @@ primary key (id),
 constraint bk_invoiceDetail unique(invoice_id, book_id),
 FOREIGN KEY(invoice_id) REFERENCES invoice(id),
 fOREIGN KEY(book_id) REFERENCES book(id)
-)
+);
 
 drop table if exists discount;
 create table discount(
