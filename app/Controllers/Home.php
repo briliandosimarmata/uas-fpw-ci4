@@ -38,16 +38,19 @@ class Home extends BaseController
         return view('home', $data);
     }
 
-    public function addToCart($code, $title, $img)
+    public function addToCart($id, $title, $img, $author, $publisher, $price)
     {
         if ($this->request->getVar('qty') < 1) {
             return redirect()->to('');
         }
 
         $cartData = [
-            "code" => $code,
+            "id" => $id,
             "title" => $title,
             "img" => $img,
+            "author" => $author,
+            "publisher" => $publisher,
+            "price" => $this->request->getVar('qty') * $price,
             "qty" => $this->request->getVar('qty')
 
         ];
@@ -59,11 +62,13 @@ class Home extends BaseController
             $index = null;
 
             foreach ($tempCartDatas as $value) :
-                if (sizeof($value) > 0 && $value["code"] == $cartData["code"]) {
+                if (sizeof($value) > 0 && $value["id"] == $cartData["id"]) {
                     $index = array_search($value, $tempCartDatas);
                     $oldQty = $tempCartDatas[$index]['qty'];
                     $newQty = $oldQty + $cartData['qty'];
                     $cartData['qty'] = $newQty;
+                    $cartData['price'] = $newQty * $price;
+                    break;
                 }
             endforeach;
 

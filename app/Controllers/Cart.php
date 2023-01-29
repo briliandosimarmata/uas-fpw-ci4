@@ -22,7 +22,6 @@ class Cart extends BaseController
             endforeach;
         }
 
-        // dd(session()->get('cart_session'));
         $data = [
             'title' => 'Keranjang',
             'totalQtyCartItem' => $totalQtyCartItem,
@@ -30,5 +29,22 @@ class Cart extends BaseController
         ];
 
         return view('cart', $data);
+    }
+
+    public function delete($id)
+    {
+        if (sizeof(session()->get('cart_session')) > 0) {
+            foreach (session()->get('cart_session') as $value) :
+                if ($value['id'] == $id) {
+                    $tempCartSession = session()->get('cart_session');
+                    $index = array_search($value, $tempCartSession);
+                    array_splice($tempCartSession, $index, 1);
+                    session()->set('cart_session', $tempCartSession);
+                    break;
+                }
+            endforeach;
+        }
+
+        return redirect()->to('cart');
     }
 }
