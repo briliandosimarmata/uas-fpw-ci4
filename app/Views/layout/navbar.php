@@ -6,8 +6,8 @@
             </ul>
             <span class="cart-quantity"><?= $totalQtyCartItem; ?></span>
             <a href="/cart"><i class="fas fa-shopping-cart me-4"></i></a>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" role="search" action="/search" method="get">
+                <input class="form-control me-2" type="search" name="title" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>

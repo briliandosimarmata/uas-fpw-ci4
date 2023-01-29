@@ -18,6 +18,13 @@ class Home extends BaseController
             session()->set("cart_session", []);
         }
 
+        $keyword = false;
+
+        if (sizeof($this->request->getGet()) > 0) {
+            $keyword = $this->request->getGet('title');
+        }
+
+
         $totalQtyCartItem = 0;
 
         if (sizeof(session()->get('cart_session')) > 0) {
@@ -29,7 +36,7 @@ class Home extends BaseController
 
         $data = [
             'title' => 'Detail Comic',
-            'books' => $this->bookModel->getAll(),
+            'books' => $this->bookModel->getAll($keyword),
             'totalQtyCartItem' => $totalQtyCartItem
         ];
 
