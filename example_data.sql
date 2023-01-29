@@ -27,4 +27,13 @@ INSERT INTO store.price
 (id, book_id, unit_price_value, created_at, updated_at)
 VALUES('b0e2aef9-9f30-11ed-8738-009337e10b18', '6071f0a3-9f30-11ed-8738-009337e10b18', 35000.00, '2023-01-29 00:24:59', '2023-01-29 00:24:59');
 
+INSERT INTO store.customer
+(id, customer_code, customer_name, customer_address, created_at, updated_at)
+VALUES('82e1766d-9fc4-11ed-8738-009337e10b18', 'BERLIN', 'Briliando Simarmata', 'Jakarta, Indonesia', '2023-01-29 18:03:07', '2023-01-29 18:03:07');
+
+INSERT INTO store.discount
+(id, book_id, disc_rate, created_at, updated_at)
+VALUES('4e2de75e-9f74-11ed-8738-009337e10b18', '6071f0a3-9f30-11ed-8738-009337e10b18', 6.00, '2023-01-29 08:28:59', '2023-01-29 08:28:59');
+
+
 
