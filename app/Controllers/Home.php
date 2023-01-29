@@ -35,7 +35,7 @@ class Home extends BaseController
         }
 
         $data = [
-            'title' => 'Detail Comic',
+            'title' => 'Book Store',
             'books' => $this->bookModel->getAll($keyword),
             'totalQtyCartItem' => $totalQtyCartItem
         ];
