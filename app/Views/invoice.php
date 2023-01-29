@@ -2,6 +2,46 @@
 
 <?= $this->section('content'); ?>
 
+<script>
+    function setCustomerInput(stringJson) {
+        let obj = JSON.parse(stringJson);
+        document.getElementById("customer").value = obj["customer_name"];
+        document.getElementById("address").value = obj["customer_address"];
+        document.getElementById("customerId").value = obj["id"];
+
+        document.getElementById("customer-autcomplete-item").innerHTML = "";
+    }
+
+    function showHint(str) {
+        let listHtml = "";
+
+        if (str.length == 0) {
+            document.getElementById("customer-autcomplete-item").innerHTML = "";
+            return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let objRes = JSON.parse(this.responseText);
+
+
+                    objRes.forEach(element => {
+                        listHtml = listHtml.concat(`
+                                <li class="list-group-item">
+                                    <button class="btn" value='${JSON.stringify(element)}' onclick="setCustomerInput(this.value)" type="button" style="font-weight: bold;"> ${element['customer_code']} | ${element['customer_name']} </button>
+                                </li>
+                        `)
+                    });
+
+                    document.getElementById("customer-autcomplete-item").innerHTML = listHtml;
+                }
+            };
+            xmlhttp.open("GET", "customer/getAll/" + str, true);
+            xmlhttp.send();
+        }
+    }
+</script>
+
 <div class="container mt-4">
     <form action="invoice/save" method="post" style="margin-bottom: 5rem;">
         <div class="row">
@@ -12,9 +52,10 @@
                 <div class="row">
                     <div class="col-md-4">
                         <label for="customer" class="form-label">Pelanggan</label>
-                        <input type="text" name="customer" class="form-control">
-                        <div class="autocomplete-area">
-                            <button class="btn" value=""> 1234 | YONO </button>
+                        <input type="text" id="customer" name="customer" placeholder="Wajib isi nama customer..." class="form-control" onkeyup="showHint(this.value)">
+                        <div class="autocomplete-area" id="customer-autcomplete">
+                            <ul class="list-group list-group-flush" id="customer-autcomplete-item">
+                            </ul>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -25,7 +66,7 @@
                 <div class="row mt-3">
                     <div class="col-md-8">
                         <label for="address" class="form-label">Alamat</label>
-                        <textarea class="form-control" placeholder="Isi alamat..." name="address"></textarea>
+                        <textarea class="form-control" id="address" name="address" disabled></textarea>
                     </div>
                 </div>
                 <div class="row mt-4">
@@ -136,6 +177,7 @@
         </div>
 
         <input type="text" name="invoiceDetails" value='<?= json_encode($invoiceDetails); ?>' style="display: none;">
+        <input type="text" id="customerId" name="customerId" style="display: none;">
     </form>
 </div>
 <?= $this->endSection(); ?>

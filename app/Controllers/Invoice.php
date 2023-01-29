@@ -94,6 +94,25 @@ class Invoice extends BaseController
         return view('invoice', $data);
     }
 
+    public function browse()
+    {
+        $totalQtyCartItem = 0;
+        if (sizeof(session()->get('cart_session')) > 0) {
+            foreach (session()->get('cart_session') as $value) :
+                if (sizeof($value) > 0)
+                    $totalQtyCartItem = $totalQtyCartItem + intval($value['qty']);
+            endforeach;
+        }
+
+        $data = [
+            'title' => 'Browse Invoice',
+            'totalQtyCartItem' => $totalQtyCartItem,
+            'cartItems' => session()->get('cart_session')
+        ];
+
+        return view('invoice-browse', $data);
+    }
+
     public function save()
     {
 
@@ -109,7 +128,7 @@ class Invoice extends BaseController
             "trx_number" => $fromCart['trxNumber'],
             "trx_date" => $trx_date,
             "trx_hours" => $trx_hours,
-            "customer_id" => "82e1766d-9fc4-11ed-8738-009337e10b18",
+            "customer_id" => $fromCart['customerId'],
             "total_qty" => $fromCart['qty'],
             "total_prc" => $fromCart['harga'],
             "total_disc_val" => $fromCart['diskon'],
@@ -125,6 +144,26 @@ class Invoice extends BaseController
                 $this->invoiceDetailModel->save($tempDetail);
             }
         }
+
+        $newSession = session()->get('cart_session');
+
+        if (sizeof($newSession) > 0) {
+            $index = 0;
+            foreach ($newSession as $value) :
+                if (sizeof($value) > 0) {
+                    $details = json_decode($fromCart['invoiceDetails'], true);
+                    foreach ($details as $detail) {
+                        if ($tempDetail['book_id'] == $value['id']) {
+                            array_splice($newSession, $index, 1);
+                        }
+                    }
+                }
+                $index++;
+            endforeach;
+        }
+
+        session()->remove('cart_session');
+        session()->set('cart_session', $newSession);
 
         return redirect()->to('cart');
     }

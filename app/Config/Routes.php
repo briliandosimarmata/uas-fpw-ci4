@@ -38,6 +38,8 @@ $routes->get('/cart/delete/(:any)', 'Cart::delete/$1');
 $routes->get('/discount/countTotalBookDiscount/(:any)', 'Discount::countTotalBookDiscount/$1/$2/$3');
 $routes->post('/invoice', 'Invoice::index');
 $routes->post('/invoice/save', 'Invoice::save');
+$routes->get('/invoice/browse', 'Invoice::browse');
+$routes->get('/customer/getAll/(:any)', 'Customer::getAll/$1');
 
 /*
  * --------------------------------------------------------------------

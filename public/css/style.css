@@ -84,7 +84,9 @@
 }
 
 .autocomplete-area {
-    height: 50px;
-    background-color: grey;
-    display: none;
+    position: absolute;
+}
+
+.autocomplete-area .list-group-item {
+    background-color: azure;
 }

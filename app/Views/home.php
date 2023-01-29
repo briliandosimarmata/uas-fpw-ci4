@@ -3,23 +3,6 @@
 <?= $this->section('content'); ?>
 
 <script>
-    // function addToCart(code, title, img, formName) {
-    //     let formData = new FormData(document.getElementById(formName));
-
-    //     let request = new XMLHttpRequest();
-
-    //     request.onreadystatechange = function() {
-    //         if (this.readyState == 4 && this.status == 200) {
-    //             console.log(this.response);
-    //         }
-    //     };
-
-    //     request.open('POST', 'home/addToCart/' + code + '/' + title + '/' + img);
-    //     request.send(formData);
-
-    //     console.log(formData.get('qty'));
-    // }
-
     function onQtyValueChange(ketTotalHargaElementId, price, qty) {
         let totalHarga = price * qty;
 

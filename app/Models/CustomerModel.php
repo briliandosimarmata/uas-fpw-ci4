@@ -14,7 +14,7 @@ class CustomerModel extends Model
         $syntax = "select * from customer where 1=1 \n";
 
         if ($keyword != false) {
-            $syntax .= "and TRIM(LOWER(a.customer_name)) like TRIM(LOWER('%" . $keyword . "%'" . ")) \n";
+            $syntax .= "and TRIM(LOWER(customer_name)) like TRIM(LOWER('%" . $keyword . "%'" . ")) \n";
         }
 
         $query = $this->db->query($syntax);
