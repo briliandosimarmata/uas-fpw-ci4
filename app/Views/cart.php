@@ -52,8 +52,6 @@
 <div class="container mt-4">
     <h3 class="mb-4"><b>Keranjang</b></h3>
     <form action="/invoice" method="post">
-        <input type="checkbox" id="all-cart-items" name="all-cart-items" value="all" class="form-check-input me-3">
-        <label for="all-cart-items">Pilih semua</label>
         <div class="row">
             <div class="col-md-7">
                 <div id="cart">

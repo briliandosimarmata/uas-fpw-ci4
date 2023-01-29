@@ -21,7 +21,7 @@
         <?php $i = 0; ?>
         <?php foreach ($books as $b) : ?>
             <div class="col-md-6">
-                <div class="card mb-3" style="max-width: 540px;">
+                <div class="card mb-3" style="max-width: 600px;">
                     <div class="row g-0">
                         <div class="col-md-5">
                             <img src="img/book/<?= $b['book_img']; ?>" class="img-fluid rounded-start" alt="<?= $b['book_title']; ?>" style="height: 310px;">

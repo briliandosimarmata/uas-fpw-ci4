@@ -44,6 +44,7 @@
 }
 
 .cart-item .img-fluid {
+    margin-left: 50px;
     height: 150px !important; 
     width: 100px !important;
 }
@@ -58,6 +59,8 @@
 
 .cart-item .form-check-input {
     vertical-align: middle;
+    margin-top: 60px;
+    margin-left: 0.5px;
     height: 30px;
     width: 30px;
     border-width: 3px;
@@ -84,7 +87,7 @@
 }
 
 .autocomplete-area {
-    position: absolute;
+    position: relative;
 }
 
 .autocomplete-area .list-group-item {

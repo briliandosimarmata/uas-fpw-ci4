@@ -104,10 +104,17 @@ class Invoice extends BaseController
             endforeach;
         }
 
+        $browseData = [];
+
+        if (!empty(request()->getVar()['customerCode'])) {
+            $browseData = $this->invoiceModel->getBrowseData(request()->getVar()['customerCode']);
+        }
+
         $data = [
             'title' => 'Browse Invoice',
             'totalQtyCartItem' => $totalQtyCartItem,
-            'cartItems' => session()->get('cart_session')
+            'cartItems' => session()->get('cart_session'),
+            'browseData' => $browseData
         ];
 
         return view('invoice-browse', $data);
