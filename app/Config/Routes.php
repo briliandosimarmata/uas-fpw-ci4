@@ -32,11 +32,12 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/search', 'Home::index');
-$routes->post('/home/addToCart/(:any)', 'Home::addToCart/$1/$2/$3/$4/$5/$6');
+$routes->post('/home/addToCart/(:any)', 'Home::addToCart/$1/$2/$3/$4/$5/$6/$7');
 $routes->get('/cart', 'Cart::index');
 $routes->get('/cart/delete/(:any)', 'Cart::delete/$1');
 $routes->get('/discount/countTotalBookDiscount/(:any)', 'Discount::countTotalBookDiscount/$1/$2/$3');
 $routes->post('/invoice', 'Invoice::index');
+$routes->post('/invoice/save', 'Invoice::save');
 
 /*
  * --------------------------------------------------------------------

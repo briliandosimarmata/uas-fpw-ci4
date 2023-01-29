@@ -69,3 +69,22 @@
     color: red;
     font-size: 20pt;
 }
+
+.card-header {
+    background-color: rgb(99, 129, 185);
+    font-weight: 600;
+    color: white;
+}
+
+.invoice-pay {
+    position: fixed;
+    padding: 10px;
+    max-width: 210px;
+    background-color: azure;
+}
+
+.autocomplete-area {
+    height: 50px;
+    background-color: grey;
+    display: none;
+}

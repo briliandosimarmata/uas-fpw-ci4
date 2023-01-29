@@ -60,7 +60,7 @@
                                     <small class="text-muted">Stok tersedia: <?= $b['qty']; ?> eks</small>
                                 </p>
 
-                                <form role="search" id="qtyForm-<?= $i; ?>" class="mb-2" action="home/addToCart/<?= $b['id']; ?>/<?= $b['book_title']; ?>/<?= $b['book_img']; ?>/<?= $b['book_author']; ?>/<?= $b['book_publisher']; ?>/<?= $b['unit_price_value']; ?>" method="post">
+                                <form role="search" id="qtyForm-<?= $i; ?>" class="mb-2" action="home/addToCart/<?= $b['id']; ?>/<?= $b['book_title']; ?>/<?= $b['book_img']; ?>/<?= $b['book_author']; ?>/<?= $b['book_publisher']; ?>/<?= $b['unit_price_value']; ?>/<?= $b['book_type_id']; ?>" method="post">
                                     <?= csrf_field(); ?>
                                     <div class="row">
                                         <div class="col-md-4">

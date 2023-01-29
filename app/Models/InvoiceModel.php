@@ -8,9 +8,6 @@ class InvoiceModel extends Model
 {
     protected $table = 'invoice';
     protected $useTimestamps = true;
-
-    public function getByDiscountByBookId($id)
-    {
-        return $this->where(['book_id' => $id])->first();
-    }
+    protected $allowedFields = ["trx_number", "trx_date", "trx_hours", "customer_id", "total_qty", "total_prc", "total_disc_val", "total_prc_aftr_disc"];
+    protected $useAutoIncrement = false;
 }

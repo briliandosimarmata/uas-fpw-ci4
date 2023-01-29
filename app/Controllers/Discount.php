@@ -13,6 +13,7 @@ class Discount extends BaseController
     {
         $this->discountModel = new DiscountModel();
     }
+
     public function countTotalBookDiscount($id, $qty, $price)
     {
         $discountMdl =  $this->discountModel->getByDiscountByBookId($id);
@@ -20,13 +21,21 @@ class Discount extends BaseController
         $unitPrice = $price / $qty;
 
         if ($discountMdl != null) {
-            $discountValue = $discountMdl['disc_rate'] / 100 * $unitPrice * $qty;
+            $discountValue = doubleval($discountMdl['disc_rate']) / 100 * $unitPrice * $qty;
         }
 
         $arrResponse = [$id => $discountValue];
 
-        // dd($arrResponse);
-
         return $this->response->setJSON($arrResponse);
+    }
+
+    public function getBookDiscountRate($id)
+    {
+        $discountMdl =  $this->discountModel->getByDiscountByBookId($id);
+        if ($discountMdl != null) {
+            return doubleval($discountMdl['disc_rate']);
+        }
+
+        return 0.00;
     }
 }

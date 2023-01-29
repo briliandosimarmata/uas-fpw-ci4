@@ -16,7 +16,7 @@ class BookModel extends Model
 
     public function getAll($keyword = false)
     {
-        $syntax = "select a.id, a.book_code, a.book_title, a.book_author, \n
+        $syntax = "select a.id, a.book_code, a.book_title, a.book_author, a.book_type_id, \n
                         b.type_name, a.book_publisher, a.book_img, c.unit_price_value, \n
                         d.physical_qty - d.sold_qty as qty \n
                     from book a inner join bookType b on b.id = a.book_type_id \n
@@ -25,7 +25,7 @@ class BookModel extends Model
                     where 1=1 \n";
 
         if ($keyword != false) {
-            $syntax .= "and TRIM(LOWER(a.book_title)) like TRIM(LOWER('" . $keyword . "%'" . ")) \n";
+            $syntax .= "and TRIM(LOWER(a.book_title)) like TRIM(LOWER('%" . $keyword . "%'" . ")) \n";
         }
 
         $query = $this->db->query($syntax);

@@ -45,7 +45,7 @@ class Home extends BaseController
         return view('home', $data);
     }
 
-    public function addToCart($id, $title, $img, $author, $publisher, $price)
+    public function addToCart($id, $title, $img, $author, $publisher, $price, $typeId)
     {
         if ($this->request->getVar('qty') < 1) {
             return redirect()->to('');
@@ -58,8 +58,8 @@ class Home extends BaseController
             "author" => $author,
             "publisher" => $publisher,
             "price" => $this->request->getVar('qty') * $price,
-            "qty" => $this->request->getVar('qty')
-
+            "qty" => $this->request->getVar('qty'),
+            "typeId" => $typeId
         ];
 
         $tempCartDatas = [$cartData];

@@ -49,8 +49,6 @@
     }
 </script>
 
-<a href="discount/countTotalBookDiscount/daa992c8-9f02-11ed-8738-009337e10b18/3/600000">Cobaaa</a>
-
 <div class="container mt-4">
     <h3 class="mb-4"><b>Keranjang</b></h3>
     <form action="/invoice" method="post">
